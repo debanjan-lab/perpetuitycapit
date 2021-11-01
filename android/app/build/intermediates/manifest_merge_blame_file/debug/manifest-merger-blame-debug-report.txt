@@ -1,0 +1,114 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.perpetuitycapital"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="30" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/debug/AndroidManifest.xml:5:5-77
+11-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/debug/AndroidManifest.xml:5:22-75
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:4:5-67
+12-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:4:22-64
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+13-->[com.facebook.flipper:flipper:0.99.0] /home/dapl-asset-111/.gradle/caches/transforms-3/fb63d61c99f103460378c9089953aeea/transformed/jetified-flipper-0.99.0/AndroidManifest.xml:16:5-76
+13-->[com.facebook.flipper:flipper:0.99.0] /home/dapl-asset-111/.gradle/caches/transforms-3/fb63d61c99f103460378c9089953aeea/transformed/jetified-flipper-0.99.0/AndroidManifest.xml:16:22-73
+14    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+14-->[com.google.android.gms:play-services-iid:17.0.0] /home/dapl-asset-111/.gradle/caches/transforms-3/a8c54e2336339f95bd1db4c453dfb2e7/transformed/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:5-82
+14-->[com.google.android.gms:play-services-iid:17.0.0] /home/dapl-asset-111/.gradle/caches/transforms-3/a8c54e2336339f95bd1db4c453dfb2e7/transformed/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:22-79
+15    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+15-->[com.android.installreferrer:installreferrer:1.1.2] /home/dapl-asset-111/.gradle/caches/transforms-3/329742d2f8df64c35de60c8f90f51f1f/transformed/jetified-installreferrer-1.1.2/AndroidManifest.xml:9:5-110
+15-->[com.android.installreferrer:installreferrer:1.1.2] /home/dapl-asset-111/.gradle/caches/transforms-3/329742d2f8df64c35de60c8f90f51f1f/transformed/jetified-installreferrer-1.1.2/AndroidManifest.xml:9:22-107
+16
+17    <application
+17-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:6:5-24:19
+18        android:name="com.perpetuitycapital.MainApplication"
+18-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:7:7-38
+19        android:allowBackup="false"
+19-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:11:7-34
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.5.0] /home/dapl-asset-111/.gradle/caches/transforms-3/1d79c18fd8d30303ca10d534195c51f0/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
+21        android:debuggable="true"
+22        android:icon="@mipmap/ic_launcher"
+22-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:9:7-41
+23        android:label="@string/app_name"
+23-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:8:7-39
+24        android:roundIcon="@mipmap/ic_launcher_round"
+24-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:10:7-52
+25        android:theme="@style/AppTheme"
+25-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:12:7-38
+26        android:usesCleartextTraffic="true" >
+26-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/debug/AndroidManifest.xml:8:9-44
+27        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+27-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/debug/AndroidManifest.xml:11:9-86
+27-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/debug/AndroidManifest.xml:11:19-83
+28        <activity
+28-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:13:7-23:18
+29            android:name="com.perpetuitycapital.MainActivity"
+29-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:14:9-37
+30            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+30-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:16:9-86
+31            android:label="@string/app_name"
+31-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:15:9-41
+32            android:launchMode="singleTask"
+32-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:17:9-40
+33            android:windowSoftInputMode="adjustResize" >
+33-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:18:9-51
+34            <intent-filter>
+34-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:19:9-22:25
+35                <action android:name="android.intent.action.MAIN" />
+35-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:20:13-65
+35-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:20:21-62
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:21:13-73
+37-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:21:23-70
+38            </intent-filter>
+39        </activity>
+40        <activity
+40-->[com.google.android.gms:play-services-auth:19.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/AndroidManifest.xml:23:9-27:75
+41            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+41-->[com.google.android.gms:play-services-auth:19.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/AndroidManifest.xml:24:13-93
+42            android:excludeFromRecents="true"
+42-->[com.google.android.gms:play-services-auth:19.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/AndroidManifest.xml:25:13-46
+43            android:exported="false"
+43-->[com.google.android.gms:play-services-auth:19.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/AndroidManifest.xml:26:13-37
+44            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+44-->[com.google.android.gms:play-services-auth:19.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/AndroidManifest.xml:27:13-72
+45        <!--
+46            Service handling Google Sign-In user revocation. For apps that do not integrate with
+47            Google Sign-In, this service will never be started.
+48        -->
+49        <service
+49-->[com.google.android.gms:play-services-auth:19.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/AndroidManifest.xml:33:9-37:51
+50            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+50-->[com.google.android.gms:play-services-auth:19.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/AndroidManifest.xml:34:13-89
+51            android:exported="true"
+51-->[com.google.android.gms:play-services-auth:19.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/AndroidManifest.xml:35:13-36
+52            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+52-->[com.google.android.gms:play-services-auth:19.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/AndroidManifest.xml:36:13-107
+53            android:visibleToInstantApps="true" />
+53-->[com.google.android.gms:play-services-auth:19.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/AndroidManifest.xml:37:13-48
+54
+55        <activity
+55-->[com.google.android.gms:play-services-base:17.5.0] /home/dapl-asset-111/.gradle/caches/transforms-3/a72e94d2a83b35afe26fdc0277923d8b/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:23:9-26:75
+56            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+56-->[com.google.android.gms:play-services-base:17.5.0] /home/dapl-asset-111/.gradle/caches/transforms-3/a72e94d2a83b35afe26fdc0277923d8b/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:24:13-79
+57            android:exported="false"
+57-->[com.google.android.gms:play-services-base:17.5.0] /home/dapl-asset-111/.gradle/caches/transforms-3/a72e94d2a83b35afe26fdc0277923d8b/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:25:13-37
+58            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+58-->[com.google.android.gms:play-services-base:17.5.0] /home/dapl-asset-111/.gradle/caches/transforms-3/a72e94d2a83b35afe26fdc0277923d8b/transformed/jetified-play-services-base-17.5.0/AndroidManifest.xml:26:13-72
+59
+60        <meta-data
+60-->[com.google.android.gms:play-services-basement:17.5.0] /home/dapl-asset-111/.gradle/caches/transforms-3/646b258f41c776dd90383633e6a4bc50/transformed/jetified-play-services-basement-17.5.0/AndroidManifest.xml:23:9-25:69
+61            android:name="com.google.android.gms.version"
+61-->[com.google.android.gms:play-services-basement:17.5.0] /home/dapl-asset-111/.gradle/caches/transforms-3/646b258f41c776dd90383633e6a4bc50/transformed/jetified-play-services-basement-17.5.0/AndroidManifest.xml:24:13-58
+62            android:value="@integer/google_play_services_version" />
+62-->[com.google.android.gms:play-services-basement:17.5.0] /home/dapl-asset-111/.gradle/caches/transforms-3/646b258f41c776dd90383633e6a4bc50/transformed/jetified-play-services-basement-17.5.0/AndroidManifest.xml:25:13-66
+63    </application>
+64
+65</manifest>
