@@ -25,11 +25,7 @@ import LoginHeader from '../../components/LoginHeader';
 import axios from 'axios';
 import { API, deviceToken } from '../../constants/Constants';
 
-GoogleSignin.configure({
-    webClientId: '119862085769-oq95922hfkhqnpmitaid1rsv5e0c4opr.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
-    offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
-
-});
+GoogleSignin.configure();
 
 class LoginScreen extends Component {
     constructor(props) {
@@ -78,7 +74,26 @@ class LoginScreen extends Component {
             await GoogleSignin.hasPlayServices();
             const userInfo = await GoogleSignin.signIn();
             //console.log(isSignedIn);
-            this.setState({ userGoogleInfo: userInfo }, () => console.log('qqqqqqq', this.state.userGoogleInfo));
+            this.setState({ userGoogleInfo: userInfo }, () => console.log('qqqqqqq', this.state.userGoogleInfo.user));
+
+            this.setState({
+                isLoading: true,
+            })
+            var data = new FormData();
+            data.append('name', this.state.userGoogleInfo.user.givenName + ' ' + this.state.userGoogleInfo.user.familyName);
+            data.append('gmail_id', this.state.userGoogleInfo.user.id);
+            data.append('device_token', deviceToken);
+            //console.log(data);
+            axios
+                .post(API + 'login-with-google', data)
+                .then(res => {
+                    console.log('get Login data', res);
+                    this.setState({ isLoading: false, }, () =>
+                        this.props.navigation.navigate('ApplyLoanScreen')
+                    )
+                    //console.log('get Login data', res.data.data);
+                })
+
         } catch (error) {
             console.log(error);
         }

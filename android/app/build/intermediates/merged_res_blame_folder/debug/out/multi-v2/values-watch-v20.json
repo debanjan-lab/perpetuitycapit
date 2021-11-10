@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
                     "source": "/home/dapl-asset-111/.gradle/caches/transforms-3/b49023de384d4f75de548a5416f208ef/transformed/jetified-play-services-auth-19.2.0/res/values-watch-v20/values.xml",

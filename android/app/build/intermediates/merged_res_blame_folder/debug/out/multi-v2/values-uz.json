@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-uz/values-uz.xml",
+            "outputFile": "/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-uz/values-uz.xml",
             "map": [
                 {
                     "source": "/home/dapl-asset-111/.gradle/caches/transforms-3/7e568a493bdc779028c7d5e8e1939da3/transformed/appcompat-1.3.0/res/values-uz/values-uz.xml",

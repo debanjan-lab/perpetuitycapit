@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-mk/values-mk.xml",
+            "outputFile": "/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-mk/values-mk.xml",
             "map": [
                 {
                     "source": "/home/dapl-asset-111/.gradle/caches/transforms-3/646b258f41c776dd90383633e6a4bc50/transformed/jetified-play-services-basement-17.5.0/res/values-mk/values.xml",
