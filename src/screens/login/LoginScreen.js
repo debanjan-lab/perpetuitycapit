@@ -61,9 +61,17 @@ class LoginScreen extends Component {
                 .post(API + 'login', data)
                 .then(res => {
                     console.log('get Login data', res);
-                    this.setState({ isLoading: false, }, () =>
-                        this.props.navigation.navigate('OtpScreen', { userData: res.data.data, mobile: this.state.mobile, countryCode: '+91', screenName: 'login' })
-                    )
+                    if (res.data.message != "no user found") {
+                        this.setState({ isLoading: false, }, () =>
+                            this.props.navigation.navigate('OtpScreen', { userData: res.data.data, mobile: this.state.mobile, countryCode: '+91', screenName: 'login' })
+                        )
+                    }
+                    else {
+                        Toast.show(res.data.message);
+                        this.setState({
+                            isLoading: false
+                        })
+                    }
                     //console.log('get Login data', res.data.data);
                 })
         }

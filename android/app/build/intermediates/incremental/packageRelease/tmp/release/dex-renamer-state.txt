@@ -1,4 +1,0 @@
-#Thu Nov 11 14:10:14 IST 2021
-base.0=/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

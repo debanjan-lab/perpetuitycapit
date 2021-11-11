@@ -39,6 +39,7 @@ class OtpScreen extends Component {
     }
 
     componentDidMount() {
+
         if (!this.state.endTimer) {
             this.interval = setInterval(() => {
                 if (this.state.seconds > 0) {
@@ -93,24 +94,32 @@ class OtpScreen extends Component {
                 .post(API + 'send-otp', data)
                 .then(res => {
                     console.log('Get OTP verify data', res);
-                    var userInfo = {
-                        userId: res.data.data.user_id,
-                        userName: res.data.data.name,
-                        userEmail: res.data.data.email,
-                        userAPIToken: res.data.data.api_token,
-                        userCountryCode: res.data.data.country_code,
-                        userMobile: res.data.data.mobile,
+                    if (res.data.message != "otp mismatch") {
+                        var userInfo = {
+                            userId: res.data.data.user_id,
+                            userName: res.data.data.name,
+                            userEmail: res.data.data.email,
+                            userAPIToken: res.data.data.api_token,
+                            userCountryCode: res.data.data.country_code,
+                            userMobile: res.data.data.mobile,
+                        }
+                        this.setState({
+                            isLoading: false,
+                            userData: userInfo
+                        })
+                        AsyncStorage.setItem('userData', JSON.stringify(this.state.userData))
+                        this.props.navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'ApplyLoanScreen', params: null }],
+                        })
+                        //this.props.navigation.navigate('ApplyLoanScreen'));
                     }
-                    this.setState({
-                        isLoading: false,
-                        userData: userInfo
-                    })
-                    AsyncStorage.setItem('userData', JSON.stringify(this.state.userData))
-                    this.props.navigation.reset({
-                        index: 0,
-                        routes: [{ name: 'ApplyLoanScreen', params: null }],
-                    })
-                    //this.props.navigation.navigate('ApplyLoanScreen'));
+                    else {
+                        Toast.show(res.data.message);
+                        this.setState({
+                            isLoading: false,
+                        })
+                    }
 
                 })
         }

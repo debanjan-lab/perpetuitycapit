@@ -23,6 +23,8 @@ import org.reactnative.maskedview.RNCMaskedViewPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+// react-native-otp-verify
+import com.faizal.OtpVerify.RNOtpVerifyPackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
@@ -78,6 +80,7 @@ public class PackageList {
       new RNCMaskedViewPackage(),
       new RNDeviceInfo(),
       new RNGestureHandlerPackage(),
+      new RNOtpVerifyPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage()
     ));
