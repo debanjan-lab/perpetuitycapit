@@ -33,7 +33,8 @@ class OtpScreen extends Component {
             seconds: '59',
             endTimer: false,
             code: '',
-            isLoadingResend: false
+            isLoadingResend: false,
+            userData: {}
         };
     }
 
@@ -101,9 +102,15 @@ class OtpScreen extends Component {
                         userMobile: res.data.data.mobile,
                     }
                     this.setState({
-                        isLoading: false
+                        isLoading: false,
+                        userData: userInfo
                     })
-                    AsyncStorage.setItem('userData', JSON.stringify(userInfo)).then(() => this.props.navigation.navigate('ApplyLoanScreen'));
+                    AsyncStorage.setItem('userData', JSON.stringify(this.state.userData))
+                    this.props.navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'ApplyLoanScreen', params: null }],
+                    })
+                    //this.props.navigation.navigate('ApplyLoanScreen'));
 
                 })
         }
@@ -200,6 +207,7 @@ class OtpScreen extends Component {
                             style={{ height: wp(25), marginBottom: wp(18) }}
                             pinCount={6}
                             autoFocusOnLoad
+                            keyboardType='phone-pad'
                             codeInputFieldStyle={{
                                 height: wp(12),
                                 width: wp(12),

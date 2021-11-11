@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import fontSelector from '../../constants/FontSelectors';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 //import Modal from "react-native-modal";
 
 import {
@@ -33,7 +34,8 @@ class LoginScreen extends Component {
         this.state = {
             isLoading: false,
             mobile: '',
-            userGoogleInfo: {}
+            userGoogleInfo: {},
+            userData: {}
         };
     }
     componentDidMount() {
@@ -89,7 +91,26 @@ class LoginScreen extends Component {
                 .then(res => {
                     console.log('get Login data', res);
                     this.setState({ isLoading: false, }, () =>
-                        this.props.navigation.navigate('ApplyLoanScreen')
+                    //this.props.navigation.navigate('ApplyLoanScreen')
+                    {
+                        var userInfo = {
+                            userId: res.data.data.user_id,
+                            userName: res.data.data.name,
+                            userEmail: res.data.data.email,
+                            userAPIToken: res.data.data.api_token,
+                            userCountryCode: res.data.data.country_code,
+                            userMobile: res.data.data.mobile,
+                        }
+                        this.setState({
+                            isLoading: false,
+                            userData: userInfo
+                        }, () => console.log('jjjjjjjj', this.state.userData))
+                        AsyncStorage.setItem('userData', JSON.stringify(this.state.userData))
+                        this.props.navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'ApplyLoanScreen', params: null }],
+                        })
+                    }
                     )
                     //console.log('get Login data', res.data.data);
                 })
@@ -132,7 +153,7 @@ class LoginScreen extends Component {
                                 onChangeText={text => this.setState({ mobile: text })}
                                 placeholder='Mobile Number'
                                 placeholderTextColor={Colors.subTextColor}
-                                keyboardType='numeric'
+                                keyboardType='phone-pad'
                                 style={{
                                     flex: 1,
                                     fontFamily: fontSelector('regular')

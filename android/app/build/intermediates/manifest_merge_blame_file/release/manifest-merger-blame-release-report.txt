@@ -6,13 +6,13 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml
+8-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml
+9-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:4:5-67
-11-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:4:22-64
+11-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:4:5-67
+11-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:4:22-64
 12    <!-- Required by older versions of Google Play services to create IID tokens -->
 13    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 13-->[com.google.android.gms:play-services-iid:17.0.0] /home/dapl-asset-111/.gradle/caches/transforms-3/a8c54e2336339f95bd1db4c453dfb2e7/transformed/jetified-play-services-iid-17.0.0/AndroidManifest.xml:23:5-82
@@ -22,42 +22,42 @@
 14-->[com.android.installreferrer:installreferrer:1.1.2] /home/dapl-asset-111/.gradle/caches/transforms-3/329742d2f8df64c35de60c8f90f51f1f/transformed/jetified-installreferrer-1.1.2/AndroidManifest.xml:9:22-107
 15
 16    <application
-16-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:6:5-24:19
+16-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:6:5-24:19
 17        android:name="com.perpetuitycapital.MainApplication"
-17-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:7:7-38
+17-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:7:7-38
 18        android:allowBackup="false"
-18-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:11:7-34
+18-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:11:7-34
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 19-->[androidx.core:core:1.2.0] /home/dapl-asset-111/.gradle/caches/transforms-3/766ecd6132736b021e7e327e80f989e8/transformed/core-1.2.0/AndroidManifest.xml:24:18-86
 20        android:icon="@mipmap/ic_launcher"
-20-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:9:7-41
+20-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:9:7-41
 21        android:label="@string/app_name"
-21-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:8:7-39
+21-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:8:7-39
 22        android:roundIcon="@mipmap/ic_launcher_round"
-22-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:10:7-52
+22-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:10:7-52
 23        android:theme="@style/AppTheme" >
-23-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:12:7-38
+23-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:12:7-38
 24        <activity
-24-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:13:7-23:18
+24-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:13:7-23:18
 25            android:name="com.perpetuitycapital.MainActivity"
-25-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:14:9-37
+25-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:14:9-37
 26            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-26-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:16:9-86
+26-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:16:9-86
 27            android:label="@string/app_name"
-27-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:15:9-41
+27-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:15:9-41
 28            android:launchMode="singleTask"
-28-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:17:9-40
+28-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:17:9-40
 29            android:windowSoftInputMode="adjustResize" >
-29-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:18:9-51
+29-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:18:9-51
 30            <intent-filter>
-30-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:19:9-22:25
+30-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:19:9-22:25
 31                <action android:name="android.intent.action.MAIN" />
-31-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:20:13-65
-31-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:20:21-62
+31-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:20:13-65
+31-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:20:21-62
 32
 33                <category android:name="android.intent.category.LAUNCHER" />
-33-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:21:13-73
-33-->/home/dapl-asset-111/ReactNativeProjects/PerpetuityCapital/PerpetuityCapital/android/app/src/main/AndroidManifest.xml:21:23-70
+33-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:21:13-73
+33-->/home/dapl-asset-111/ReactNativeProjects/loanApp/android/app/src/main/AndroidManifest.xml:21:23-70
 34            </intent-filter>
 35        </activity>
 36        <activity

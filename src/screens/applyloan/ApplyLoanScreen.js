@@ -23,11 +23,31 @@ import ParsedText from 'react-native-parsed-text';
 import Colors from '../../constants/Colors';
 import LoginHeader from '../../components/LoginHeader';
 //import CountryModal from '../../components/CountryModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API, deviceToken } from '../../constants/Constants';
 
 class ApplyLoanScreen extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            userName: ''
+        }
+    }
+    async componentDidMount() {
+        var userData = await AsyncStorage.getItem('userData');
+        var userD = JSON.parse(userData);
+        console.log('lllllllll', userD);
+        this.setState({
+            userName: userD.userName,
+        })
+    }
+    logoutPressed = () => {
+        console.log('pressed');
+        AsyncStorage.setItem('userData', '')
+        this.props.navigation.reset({
+            index: 0,
+            routes: [{ name: 'LoginScreen', params: null }],
+        })
     }
     render() {
         return (
@@ -35,6 +55,12 @@ class ApplyLoanScreen extends Component {
                 <View style={{ marginTop: wp(10), alignItems: 'center' }}>
                     <Text>Welcome</Text>
                 </View>
+                <TouchableOpacity
+                    onPress={() => this.logoutPressed()}
+                    style={{ marginTop: wp(10), alignItems: 'center' }}
+                >
+                    <Text>Logout</Text>
+                </TouchableOpacity>
             </SafeAreaView>
         )
     }

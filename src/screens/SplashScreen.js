@@ -9,14 +9,41 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class SplashScreen extends Component {
     constructor(props) {
         super(props);
     }
     async componentDidMount() {
+        var userData = await AsyncStorage.getItem('userData');
+        userData = JSON.parse(userData);
+        console.log(userData);
         setTimeout(() => {
-            this.props.navigation.replace('LoginScreen');
+            if (userData) {
+                var userInfo = {
+                    userId: userData.userId,
+                    userName: userData.userName,
+                    userEmail: userData.userEmail,
+                    userAPIToken: userData.userAPIToken,
+                    userCountryCode: userData.userCountryCode,
+                    userMobile: userData.userMobile,
+                }
+                //this.props.navigation.replace('ApplyLoanScreen');
+                this.props.navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'ApplyLoanScreen', params: null }],
+                })
+            }
+            else {
+                //this.props.navigation.replace('LoginScreen');
+                this.props.navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'LoginScreen', params: null }],
+                })
+
+            }
+            //this.props.navigation.replace('LoginScreen');
         }, 2000);
     }
     render() {
