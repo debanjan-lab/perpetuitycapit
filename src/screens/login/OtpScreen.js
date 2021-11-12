@@ -34,7 +34,8 @@ class OtpScreen extends Component {
             endTimer: false,
             code: '',
             isLoadingResend: false,
-            userData: {}
+            userData: {},
+            smsDetails: this.props.route.params.userData.response.details
         };
     }
 
@@ -75,26 +76,38 @@ class OtpScreen extends Component {
             var data = new FormData();
             if (this.props.route.params.screenName == 'login') {
                 var userId = this.props.route.params.userData.user_id;
-                var smsDetails = this.props.route.params.userData.response.details;
+                var name = this.props.route.params.userData.name;
+                var email = this.props.route.params.userData.email;
+                //var countryCode = this.props.route.params.countryCode;
+                //var smsDetails = this.props.route.params.userData.response.details;
+                var type = 1;
+                var sociaId = '';
             }
             else {
                 var userId = 0;
-                var smsDetails = this.props.route.params.userData.details;
+                var name = this.props.route.params.userInput.name;
+                var email = this.props.route.params.userInput.email;
+                //var countryCode = this.props.route.params.userInput.countryCode;
+                //var smsDetails = this.props.route.params.userData.response.details;
+                var type = this.props.route.params.userInput.type;
+                var sociaId = this.props.route.params.userInput.social_id;
             }
-            data.append('name', this.props.route.params.userData.name);
-            data.append('email', this.props.route.params.userData.email);
-            data.append('country_code', this.props.route.params.countryCode);
+            data.append('name', name);
+            data.append('email', email);
+            data.append('country_code', '+91');
             data.append('mobile', this.props.route.params.mobile);
-            data.append('sms_details', smsDetails);
+            data.append('sms_details', this.state.smsDetails);
             data.append('otp', this.state.code);
             data.append('user_id', userId);
             data.append('device_token', deviceToken);
-            //console.log(data);
+            data.append('type', type);
+            data.append('social_id', sociaId);
+            console.log(data);
             axios
                 .post(API + 'send-otp', data)
                 .then(res => {
                     console.log('Get OTP verify data', res);
-                    if (res.data.message != "otp mismatch") {
+                    if (res.data.message == "Registration Successfully" || res.data.message == "Login Successfully") {
                         var userInfo = {
                             userId: res.data.data.user_id,
                             userName: res.data.data.name,
@@ -129,6 +142,14 @@ class OtpScreen extends Component {
     }
     resendOtp() {
         //console.log('resend');
+        if (this.props.route.params.screenName == 'login') {
+            type = 1;
+            socialId = '';
+        }
+        else {
+            var type = this.props.route.params.userInput.type;
+            var socialId = this.props.route.params.userInput.social_id;
+        }
         this.setState({
             isLoadingResend: true,
         })
@@ -136,7 +157,9 @@ class OtpScreen extends Component {
         data.append('country_code', this.props.route.params.countryCode);
         data.append('mobile', this.props.route.params.mobile);
         data.append('device_token', deviceToken);
-        //console.log(data);
+        data.append('type', type);
+        data.append('social_id', socialId);
+        console.log('resend data', data);
         axios
             .post(API + 'resend-otp', data)
             .then(res => {
@@ -145,7 +168,9 @@ class OtpScreen extends Component {
                     endTimer: false,
                     minutes: '01',
                     seconds: '59',
-                    isLoadingResend: false
+                    isLoadingResend: false,
+                    code: '',
+                    smsDetails: res.data.data.response.details
                 })
             })
     }

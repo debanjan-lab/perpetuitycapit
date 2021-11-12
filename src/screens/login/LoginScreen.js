@@ -56,7 +56,8 @@ class LoginScreen extends Component {
             data.append('country_code', '+91');
             data.append('mobile', this.state.mobile);
             data.append('device_token', deviceToken);
-            //console.log(data);
+            data.append('type', 1);
+            console.log(data);
             axios
                 .post(API + 'login', data)
                 .then(res => {
@@ -89,39 +90,91 @@ class LoginScreen extends Component {
             this.setState({
                 isLoading: true,
             })
+
             var data = new FormData();
-            data.append('name', this.state.userGoogleInfo.user.givenName + ' ' + this.state.userGoogleInfo.user.familyName);
-            data.append('gmail_id', this.state.userGoogleInfo.user.id);
+            data.append('country_code', '');
+            data.append('mobile', '');
             data.append('device_token', deviceToken);
-            //console.log(data);
+            data.append('type', 2);
+            data.append('social_id', this.state.userGoogleInfo.user.id);
+            console.log(data);
             axios
-                .post(API + 'login-with-google', data)
+                .post(API + 'login', data)
                 .then(res => {
                     console.log('get Login data', res);
-                    this.setState({ isLoading: false, }, () =>
-                    //this.props.navigation.navigate('ApplyLoanScreen')
-                    {
-                        var userInfo = {
-                            userId: res.data.data.user_id,
-                            userName: res.data.data.name,
-                            userEmail: res.data.data.email,
-                            userAPIToken: res.data.data.api_token,
-                            userCountryCode: res.data.data.country_code,
-                            userMobile: res.data.data.mobile,
-                        }
-                        this.setState({
-                            isLoading: false,
-                            userData: userInfo
-                        }, () => console.log('jjjjjjjj', this.state.userData))
-                        AsyncStorage.setItem('userData', JSON.stringify(this.state.userData))
-                        this.props.navigation.reset({
-                            index: 0,
-                            routes: [{ name: 'ApplyLoanScreen', params: null }],
-                        })
+                    if (res.data.message == "no user found") {
+                        this.setState({ isLoading: false, }, () =>
+                            // this.props.navigation.navigate('OtpScreen', { userData: res.data.data, mobile: this.state.mobile, countryCode: '+91', screenName: 'login' })
+                            this.props.navigation.navigate('RegistrationScreen', { googleInfo: this.state.userGoogleInfo.user, type: 2 })
+                        )
                     }
-                    )
-                    //console.log('get Login data', res.data.data);
+                    else {
+                        if (res.data.message == "Social Login Successfully") {
+                            var userInfo = {
+                                userId: res.data.data.user_id,
+                                userName: res.data.data.name,
+                                userEmail: res.data.data.email,
+                                userAPIToken: res.data.data.api_token,
+                                userCountryCode: res.data.data.country_code,
+                                userMobile: res.data.data.mobile,
+                            }
+                            this.setState({
+                                isLoading: false,
+                                userData: userInfo
+                            })
+                            AsyncStorage.setItem('userData', JSON.stringify(this.state.userData))
+                            this.props.navigation.reset({
+                                index: 0,
+                                routes: [{ name: 'ApplyLoanScreen', params: null }],
+                            })
+                            //this.props.navigation.navigate('ApplyLoanScreen'));
+                        }
+                        else {
+                            Toast.show(res.data.message);
+                            this.setState({
+                                isLoading: false,
+                            })
+                        }
+                    }
+
                 })
+
+            // this.setState({
+            //     isLoading: true,
+            // })
+            // var data = new FormData();
+            // data.append('name', this.state.userGoogleInfo.user.givenName + ' ' + this.state.userGoogleInfo.user.familyName);
+            // data.append('gmail_id', this.state.userGoogleInfo.user.id);
+            // data.append('device_token', deviceToken);
+            // //console.log(data);
+            // axios
+            //     .post(API + 'login-with-google', data)
+            //     .then(res => {
+            //         console.log('get Login data', res);
+            //         this.setState({ isLoading: false, }, () =>
+            //         //this.props.navigation.navigate('ApplyLoanScreen')
+            //         {
+            //             var userInfo = {
+            //                 userId: res.data.data.user_id,
+            //                 userName: res.data.data.name,
+            //                 userEmail: res.data.data.email,
+            //                 userAPIToken: res.data.data.api_token,
+            //                 userCountryCode: res.data.data.country_code,
+            //                 userMobile: res.data.data.mobile,
+            //             }
+            //             this.setState({
+            //                 isLoading: false,
+            //                 userData: userInfo
+            //             }, () => console.log('jjjjjjjj', this.state.userData))
+            //             AsyncStorage.setItem('userData', JSON.stringify(this.state.userData))
+            //             this.props.navigation.reset({
+            //                 index: 0,
+            //                 routes: [{ name: 'ApplyLoanScreen', params: null }],
+            //             })
+            //         }
+            //         )
+            //         //console.log('get Login data', res.data.data);
+            //     })
 
         } catch (error) {
             console.log(error);
@@ -164,6 +217,7 @@ class LoginScreen extends Component {
                                 keyboardType='phone-pad'
                                 style={{
                                     flex: 1,
+                                    color: Colors.mainTextColor,
                                     fontFamily: fontSelector('regular')
                                 }}
                             />
@@ -203,7 +257,7 @@ class LoginScreen extends Component {
                             <Image source={require('../../images/gmail_icon.png')} style={{ height: wp(4.2), width: wp(4.2), resizeMode: 'contain' }} />
                             <Text style={{ fontFamily: fontSelector('regular'), fontSize: wp(3.8), color: Colors.mainTextColor, marginLeft: wp(2) }}>Continue with Gmail</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity
+                        {/* <TouchableOpacity
                             style={{
                                 flexDirection: 'row',
                                 borderColor: Colors.greenColor,
@@ -217,10 +271,10 @@ class LoginScreen extends Component {
                         >
                             <Image source={require('../../images/apple_icon.png')} style={{ height: wp(4.5), width: wp(4.5), resizeMode: 'contain' }} />
                             <Text style={{ fontFamily: fontSelector('regular'), fontSize: wp(3.8), color: Colors.mainTextColor, marginLeft: wp(2) }}>Continue with Apple ID</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                         <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('RegistrationScreen')}
-                            style={{ marginTop: wp(8), alignItems: 'center' }}
+                            onPress={() => this.props.navigation.navigate('RegistrationScreen', { googleInfo: '', type: 1 })}
+                            style={{ marginTop: wp(20), alignItems: 'center' }}
                         >
                             <Text style={{ fontFamily: fontSelector('medium'), fontSize: wp(3.8), color: Colors.greenColor, textDecorationLine: 'underline' }}>Don't have an account</Text>
                         </TouchableOpacity>

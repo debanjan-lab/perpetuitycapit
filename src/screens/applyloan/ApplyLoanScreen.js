@@ -30,7 +30,9 @@ class ApplyLoanScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: ''
+            userName: '',
+            userId: '',
+            apiToken: ''
         }
     }
     async componentDidMount() {
@@ -39,27 +41,51 @@ class ApplyLoanScreen extends Component {
         console.log('lllllllll', userD);
         this.setState({
             userName: userD.userName,
+            userId: userD.userId,
+            apiToken: userD.userAPIToken,
         })
     }
     logoutPressed = () => {
         console.log('pressed');
-        AsyncStorage.setItem('userData', '')
+
         this.props.navigation.reset({
             index: 0,
             routes: [{ name: 'LoginScreen', params: null }],
         })
+
+        // var data = new FormData();
+        // data.append('user_id', this.state.userId);
+        // data.append('api_token', this.state.apiToken);
+        // console.log(data);
+        // axios
+        //     .post(API + 'logout', data)
+        //     .then(res => {
+        //         console.log('Get OTP verify data', res);
+        //         if (res.data.message == "Logout Successfully") {
+        //             AsyncStorage.setItem('userData', '');
+        //             this.props.navigation.reset({
+        //                 index: 0,
+        //                 routes: [{ name: 'LoginScreen', params: null }],
+        //             })
+        //         }
+        //         else {
+        //             console.log(res.data.message);
+        //         }
+
+        //     })
+
     }
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
                 <View style={{ marginTop: wp(10), alignItems: 'center' }}>
-                    <Text>Welcome</Text>
+                    <Text style={{ color: Colors.mainTextColor }}>Welcome</Text>
                 </View>
                 <TouchableOpacity
                     onPress={() => this.logoutPressed()}
                     style={{ marginTop: wp(10), alignItems: 'center' }}
                 >
-                    <Text>Logout</Text>
+                    <Text style={{ color: Colors.mainTextColor }}>Logout</Text>
                 </TouchableOpacity>
             </SafeAreaView>
         )

@@ -38,10 +38,20 @@ class RegistrationScreen extends Component {
             countryAllCodes: [],
             selectedCode: '91',
             countryId: '',
+            socialId: '',
+            type: 1,
         };
     }
     componentDidMount() {
         //this.getCountryCodes();
+        if (this.props.route.params.googleInfo != '') {
+            this.setState({
+                name: this.props.route.params.googleInfo.givenName + ' ' + this.props.route.params.googleInfo.familyName,
+                email: this.props.route.params.googleInfo.email,
+                socialId: this.props.route.params.googleInfo.id,
+                type: this.props.route.params.type
+            })
+        }
 
     }
     // getCountryCodes() {
@@ -87,9 +97,7 @@ class RegistrationScreen extends Component {
         ) {
             Toast.show('Cannot leave a blank field');
         } else {
-            this.setState({
-                isLoading: true,
-            })
+
             if (this.state.name == '') {
                 Toast.show('Please enter Name');
             } else if (this.state.email == '') {
@@ -104,21 +112,40 @@ class RegistrationScreen extends Component {
                 Toast.show('Please check terms and conditions');
             }
             else {
+                this.setState({
+                    isLoading: true,
+                })
                 var data = new FormData();
                 data.append('name', this.state.name);
                 data.append('email', this.state.email);
                 data.append('country_code', '+91');
                 data.append('mobile', this.state.mobile);
                 data.append('terms_and_condition', this.state.checkbox);
+                data.append('social_id', this.state.socialId);
+                data.append('type', this.state.type);
                 data.append('device_token', deviceToken);
-                console.log(data, API + 'registration');
+                console.log(data);
                 axios
                     .post(API + 'registration', data)
                     .then(res => {
                         console.log('get registration data', res);
-                        this.setState({ isLoading: false, }, () =>
-                            this.props.navigation.navigate('OtpScreen', { userData: res.data.data, mobile: this.state.mobile, countryCode: '+91', screenName: 'registration' })
-                        )
+                        if (res.data.message != "email already exist") {
+                            if (res.data.message != "mobile number already exist") {
+                                this.setState({ isLoading: false, }, () =>
+                                    this.props.navigation.navigate('OtpScreen', { userData: res.data.data, mobile: this.state.mobile, countryCode: '+91', screenName: 'registration', userInput: res.data.input })
+                                )
+                                //console.log('ok');
+                            }
+                            else {
+                                Toast.show(res.data.message);
+                                this.setState({ isLoading: false, })
+                            }
+                        }
+                        else {
+                            Toast.show(res.data.message);
+                            this.setState({ isLoading: false, })
+                        }
+
                     })
             }
         }
@@ -162,6 +189,7 @@ class RegistrationScreen extends Component {
                             placeholderTextColor={Colors.subTextColor}
                             style={{
                                 flex: 1,
+                                color: Colors.mainTextColor,
                                 fontFamily: fontSelector('regular'),
                                 flexDirection: 'row',
                                 backgroundColor: '#F1F6FC',
@@ -178,6 +206,7 @@ class RegistrationScreen extends Component {
                             placeholderTextColor={Colors.subTextColor}
                             style={{
                                 flex: 1,
+                                color: Colors.mainTextColor,
                                 fontFamily: fontSelector('regular'),
                                 flexDirection: 'row',
                                 backgroundColor: '#F1F6FC',
@@ -214,9 +243,10 @@ class RegistrationScreen extends Component {
                                 onChangeText={text => this.setState({ mobile: text })}
                                 placeholder='Mobile Number'
                                 placeholderTextColor={Colors.subTextColor}
-                                keyboardType='numeric'
+                                keyboardType='phone-pad'
                                 style={{
                                     flex: 1,
+                                    color: Colors.mainTextColor,
                                     fontFamily: fontSelector('regular')
                                 }}
                                 maxLength={10}
