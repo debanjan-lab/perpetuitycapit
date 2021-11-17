@@ -20,6 +20,7 @@ import {
 import Toast from 'react-native-simple-toast';
 import Colors from '../../constants/Colors';
 import AppStatusBar from '../../components/Statusbar';
+import ErrorModal from '../../components/ErrorModal';
 import axios from 'axios';
 import { API, deviceToken } from '../../constants/Constants';
 
@@ -35,7 +36,9 @@ class OtpScreen extends Component {
             code: '',
             isLoadingResend: false,
             userData: {},
-            smsDetails: this.props.route.params.userData.response.details
+            smsDetails: this.props.route.params.userData.response.details,
+            isModalVisible: false,
+            errorText: '',
         };
     }
 
@@ -107,7 +110,7 @@ class OtpScreen extends Component {
                 .post(API + 'send-otp', data)
                 .then(res => {
                     console.log('Get OTP verify data', res);
-                    if (res.data.message == "Registration Successfully" || res.data.message == "Login Successfully") {
+                    if ((res.data.message == "Registration Successfully" || res.data.message == "Login Successfully") && res.data.message != "Registration Successfully") {
                         var userInfo = {
                             userId: res.data.data.user_id,
                             userName: res.data.data.name,
@@ -128,9 +131,11 @@ class OtpScreen extends Component {
                         //this.props.navigation.navigate('ApplyLoanScreen'));
                     }
                     else {
-                        Toast.show(res.data.message);
                         this.setState({
                             isLoading: false,
+                            errorText: res.data.message,
+                            isModalVisible: true,
+                            code: ''
                         })
                     }
 
@@ -177,6 +182,12 @@ class OtpScreen extends Component {
 
     componentWillUnmount() {
         clearInterval(this.interval);
+    }
+
+    toggleModal = (childData) => {
+        this.setState({
+            isModalVisible: childData
+        })
     }
 
     render() {
@@ -291,6 +302,11 @@ class OtpScreen extends Component {
                         }
 
                     </View>
+                    <ErrorModal
+                        isModalVisible={this.state.isModalVisible}
+                        title={this.state.errorText}
+                        toggleModal={this.toggleModal}
+                    />
                 </ScrollView>
             </SafeAreaView>
         )

@@ -14,6 +14,7 @@ import {
 import fontSelector from '../../constants/FontSelectors';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ErrorModal from '../../components/ErrorModal';
 //import Modal from "react-native-modal";
 
 import {
@@ -35,7 +36,9 @@ class LoginScreen extends Component {
             isLoading: false,
             mobile: '',
             userGoogleInfo: {},
-            userData: {}
+            userData: {},
+            isModalVisible: false,
+            errorText: ''
         };
     }
     componentDidMount() {
@@ -68,9 +71,11 @@ class LoginScreen extends Component {
                         )
                     }
                     else {
-                        Toast.show(res.data.message);
+                        //Toast.show(res.data.message);
                         this.setState({
-                            isLoading: false
+                            isLoading: false,
+                            errorText: res.data.message,
+                            isModalVisible: true
                         })
                     }
                     //console.log('get Login data', res.data.data);
@@ -130,9 +135,10 @@ class LoginScreen extends Component {
                             //this.props.navigation.navigate('ApplyLoanScreen'));
                         }
                         else {
-                            Toast.show(res.data.message);
                             this.setState({
                                 isLoading: false,
+                                errorText: res.data.message,
+                                isModalVisible: true
                             })
                         }
                     }
@@ -181,6 +187,12 @@ class LoginScreen extends Component {
         }
     }
 
+    toggleModal = (childData) => {
+        this.setState({
+            isModalVisible: childData
+        })
+    }
+
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
@@ -204,7 +216,10 @@ class LoginScreen extends Component {
                                 marginVertical: wp(7)
                             }}
                         >
-                            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginLeft: wp(5) }}>
+                            <TouchableOpacity
+                                onPress={() => this.setState({ isModalVisible: true })}
+                                style={{ flexDirection: 'row', alignItems: 'center', marginLeft: wp(5) }}
+                            >
                                 <Text style={{ fontFamily: fontSelector('regular'), fontSize: wp(3.5), color: Colors.mainTextColor, marginRight: wp(2) }}>+91</Text>
                                 <Image source={require('../../images/down_arrow.png')} style={{ height: wp(2.5), width: wp(2), resizeMode: 'contain' }} />
                             </TouchableOpacity>
@@ -279,6 +294,11 @@ class LoginScreen extends Component {
                             <Text style={{ fontFamily: fontSelector('medium'), fontSize: wp(3.8), color: Colors.greenColor, textDecorationLine: 'underline' }}>Don't have an account</Text>
                         </TouchableOpacity>
                     </View>
+                    <ErrorModal
+                        isModalVisible={this.state.isModalVisible}
+                        title={this.state.errorText}
+                        toggleModal={this.toggleModal}
+                    />
                 </ScrollView>
             </SafeAreaView>
         )

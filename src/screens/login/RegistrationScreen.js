@@ -23,6 +23,7 @@ import ParsedText from 'react-native-parsed-text';
 import Colors from '../../constants/Colors';
 import LoginHeader from '../../components/LoginHeader';
 //import CountryModal from '../../components/CountryModal';
+import ErrorModal from '../../components/ErrorModal';
 import { API, deviceToken } from '../../constants/Constants';
 
 class RegistrationScreen extends Component {
@@ -35,6 +36,7 @@ class RegistrationScreen extends Component {
             email: '',
             checkbox: 0,
             isModalVisible: false,
+            errorText: '',
             countryAllCodes: [],
             selectedCode: '91',
             countryId: '',
@@ -137,13 +139,19 @@ class RegistrationScreen extends Component {
                                 //console.log('ok');
                             }
                             else {
-                                Toast.show(res.data.message);
-                                this.setState({ isLoading: false, })
+                                this.setState({
+                                    isLoading: false,
+                                    errorText: res.data.message,
+                                    isModalVisible: true
+                                })
                             }
                         }
                         else {
-                            Toast.show(res.data.message);
-                            this.setState({ isLoading: false, })
+                            this.setState({
+                                isLoading: false,
+                                errorText: res.data.message,
+                                isModalVisible: true
+                            })
                         }
 
                     })
@@ -151,11 +159,11 @@ class RegistrationScreen extends Component {
         }
     }
 
-    // toggleModal = (childData) => {
-    //     this.setState({
-    //         isModalVisible: childData
-    //     })
-    // }
+    toggleModal = (childData) => {
+        this.setState({
+            isModalVisible: childData
+        })
+    }
 
     // onCountryPressed = (code, country, id, index) => {
     //     console.log('asdasd', code, country, id, index);
@@ -330,7 +338,11 @@ class RegistrationScreen extends Component {
                             toggleModal={this.toggleModal}
                             onCountryPressed={this.onCountryPressed}
                         /> */}
-
+                        <ErrorModal
+                            isModalVisible={this.state.isModalVisible}
+                            title={this.state.errorText}
+                            toggleModal={this.toggleModal}
+                        />
                     </View>
                 </ScrollView>
             </SafeAreaView>
