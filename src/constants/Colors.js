@@ -4,5 +4,5 @@ export default class Colors {
   static greenColor = '#1A5632';
   static whiteColor = '#FFF';
   static greyColor = '#F2F2F3';
-  static buttonColor = 'black';
+  static lightGreen = '#EEF9EF';
 }

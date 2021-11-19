@@ -32,7 +32,7 @@ class SplashScreen extends Component {
                 //this.props.navigation.replace('ApplyLoanScreen');
                 this.props.navigation.reset({
                     index: 0,
-                    routes: [{ name: 'ApplyLoanScreen', params: null }],
+                    routes: [{ name: 'DrawerStack', params: null }],
                 })
             }
             else {

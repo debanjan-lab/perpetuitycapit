@@ -126,7 +126,7 @@ class OtpScreen extends Component {
                         AsyncStorage.setItem('userData', JSON.stringify(this.state.userData))
                         this.props.navigation.reset({
                             index: 0,
-                            routes: [{ name: 'ApplyLoanScreen', params: null }],
+                            routes: [{ name: 'DrawerScreen', params: null }],
                         })
                         //this.props.navigation.navigate('ApplyLoanScreen'));
                     }
