@@ -19,6 +19,8 @@ import {
 import Colors from '../../constants/Colors';
 import ApplyLoanHeader from '../../components/ApplyLoanHeader';
 import ApplyLoanSubHeader from '../../components/ApplyLoanSubHeader';
+import TextFieldComponent from '../../components/TextFieldComponent';
+import ApplyLoanFooter from '../../components/ApplyLoanFooter';
 
 class PersonalDetailsScreen extends Component {
     constructor(props) {
@@ -53,72 +55,28 @@ class PersonalDetailsScreen extends Component {
                         justifyContent: 'space-between',
                     }}
                 >
-                    <View
-                        style={{
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginHorizontal: wp(4),
-                            paddingVertical: wp(20)
-                        }}
-                    >
-                        <Image
-                            source={require('../../images/home_icon.png')}
-                            style={{ height: wp(35), width: wp(70), }}
+                    <View style={{ marginHorizontal: wp(4) }}>
+                        <TextFieldComponent
+                            placeHolder="PAN Number"
+                            rightIcon={false}
                         />
-                        <Text
-                            style={{
-                                color: Colors.greenColor,
-                                fontSize: wp(4.3),
-                                fontFamily: fontSelector('medium'),
-                                marginTop: wp(10),
-                                marginBottom: wp(5)
-                            }}
-                        >
-                            Hi welcome to Perpetuity Capital
-                        </Text>
-                        <Text
-                            style={styles.subTextStyle}
-                        >
-                            Thanks for registering with Perpetuity Capital.
-                        </Text>
-                        <Text
-                            style={styles.subTextStyle}
-                        >
-                            Let's get started.
-                        </Text>
-                        <TouchableOpacity
-                            style={{
-                                backgroundColor: Colors.greenColor,
-                                paddingHorizontal: wp(12),
-                                paddingVertical: wp(4),
-                                borderRadius: wp(10),
-                                marginTop: wp(12)
-                            }}
-                        >
-                            <Text
-                                style={{
-                                    color: Colors.whiteColor,
-                                    fontSize: wp(3.8),
-                                    fontFamily: fontSelector('regular'),
-                                    textAlign: 'center'
-                                }}
-                            >
-                                Apply For Loan
-                            </Text>
-                        </TouchableOpacity>
+                        <TextFieldComponent
+                            placeHolder="Name"
+                            rightIcon={true}
+                            type="cross"
+                        />
+                        <TextFieldComponent
+                            placeHolder="DOB"
+                            rightIcon={true}
+                            type="calender"
+                        />
+                        <TextFieldComponent
+                            placeHolder="Mobile Number"
+                            rightIcon={false}
+                            type="mobile"
+                        />
                     </View>
-                    <View style={{ backgroundColor: Colors.lightGreen, paddingVertical: wp(5) }}>
-                        <Text
-                            style={{
-                                color: Colors.greenColor,
-                                fontSize: wp(4.3),
-                                fontFamily: fontSelector('medium'),
-                                textAlign: 'center'
-                            }}
-                        >
-                            Calculate EMI
-                        </Text>
-                    </View>
+                    <ApplyLoanFooter />
                 </View>
             </SafeAreaView>
         )

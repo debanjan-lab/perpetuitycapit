@@ -19,13 +19,14 @@ class ApplyLoanSubHeader extends Component {
     }
     render() {
         return (
-            <View style={{ paddingVertical: wp(7), paddingHorizontal: wp(4) }}>
+            <View style={{ paddingTop: wp(7), paddingBottom: wp(4), paddingHorizontal: wp(4) }}>
                 <Text
                     style={{
                         color: Colors.greenColor,
-                        fontSize: wp(4.8),
+                        fontSize: wp(5.5),
                         fontFamily: fontSelector('bold'),
-                        marginBottom: wp(1)
+                        marginBottom: wp(1),
+                        fontWeight: '700'
                     }}
                 >
                     Personal Details
@@ -33,7 +34,7 @@ class ApplyLoanSubHeader extends Component {
                 <Text
                     style={{
                         color: Colors.subTextColor,
-                        fontSize: wp(3.6),
+                        fontSize: wp(3.7),
                         fontFamily: fontSelector('regular'),
                     }}
                 >Please fill the details to continue</Text>

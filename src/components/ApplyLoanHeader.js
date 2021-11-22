@@ -47,7 +47,8 @@ class ApplyLoanHeader extends Component {
                             color: Colors.mainTextColor,
                             fontSize: wp(4.8),
                             fontFamily: fontSelector('bold'),
-                            textAlign: 'center'
+                            textAlign: 'center',
+                            fontWeight: '700'
                         }}
                     >
                         Apply For Loan
