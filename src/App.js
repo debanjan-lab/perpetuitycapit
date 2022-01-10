@@ -14,7 +14,7 @@ import { checkAuth } from './redux/actions/AuthActions';
 import SplashScreen from 'react-native-splash-screen'
 const App = () => {
   const authState = useSelector((state) => state.auth)
-  //console.log("auth================", authState)
+  console.log("auth================", authState)
 
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()

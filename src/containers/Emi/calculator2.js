@@ -57,10 +57,11 @@ class CalculateEmi extends Component {
                     <AppHeaderInner
                         headerText="Emi Calculator"
                         navigation={this.props.navigation}
+                        goBack={true}
                     />
                     <View style={styles.graphWrapper}>
                         <Text style={styles.text1}>Total amount payable</Text>
-                        <Text style={styles.text2}>₹{this.props.route?.params?.total_amount_payable?.toLocaleString()}</Text>
+                        <Text style={styles.text2}>₹{Math.round(this.props.route?.params?.total_amount_payable)?.toLocaleString()}</Text>
                         <View style={{ margin: 20 }} />
                         <PieChart
                             widthAndHeight={widthAndHeight}
@@ -75,7 +76,7 @@ class CalculateEmi extends Component {
                             <Text style={styles.text1}>Principal Amount</Text>
                         </View>
 
-                        <Text style={styles.textRight}>₹{this.props.route?.params?.loanAmountValue?.toLocaleString()}</Text>
+                        <Text style={styles.textRight}>₹{Math.round(this.props.route?.params?.loanAmountValue)?.toLocaleString()}</Text>
                     </View>
                     <View style={styles.tagsWrapper}>
                         <View style={styles.tagsInner}>
@@ -83,11 +84,11 @@ class CalculateEmi extends Component {
                             <View style={{ margin: 5 }} />
                             <Text style={styles.text1}>Total Interest</Text>
                         </View>
-                        <Text style={styles.textRight}>₹{this.props.route?.params?.totinterest?.toLocaleString()}</Text>
+                        <Text style={styles.textRight}>₹{Math.round(this.props.route?.params?.totinterest)?.toLocaleString()}</Text>
                     </View>
                     <View style={styles.calculateEmiWrapper}>
                         <Text style={styles.calculateEmiText}>EMI Per Month</Text>
-                        <Text style={styles.calculateEmiText}>₹{this.props.route?.params?.emiamnt?.toLocaleString()}</Text>
+                        <Text style={styles.calculateEmiText}>₹{Math.round(this.props.route?.params?.emiamnt)?.toLocaleString()}</Text>
                     </View>
                 </View>
             </ScrollView>

@@ -6,6 +6,7 @@ import {
 import { Provider } from "react-redux";
 import Store from "./redux/store";
 import App from './App'
+import Pay from './pay'
 const Index = () => {
     return (
         <Provider store={Store}>

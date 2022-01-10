@@ -22,6 +22,10 @@ import TemporarySavedLoan from '../containers/Loan/temporary';
 import AppliedLoan from '../containers/Loan/applied';
 import ApprovedLoan from '../containers/Loan/approved';
 
+import AboutUs from '../containers/AboutUs';
+import HowItWorks from '../containers/HowItWorks';
+import ContactUs from '../containers/ContactUs';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +59,10 @@ const AppStackNavigator = () => {
             <Stack.Screen name="TemporarySavedLoan" component={TemporarySavedLoan} />
             <Stack.Screen name="AppliedLoan" component={AppliedLoan} />
             <Stack.Screen name="ApprovedLoan" component={ApprovedLoan} />
+
+            <Stack.Screen name="AboutUs" component={AboutUs} />
+            <Stack.Screen name="HowItWorks" component={HowItWorks} />
+            <Stack.Screen name="ContactUs" component={ContactUs} />
 
         </Stack.Navigator>
     );

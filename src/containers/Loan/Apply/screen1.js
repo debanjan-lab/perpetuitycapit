@@ -52,7 +52,7 @@ class LoanApplyScreen1 extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({
-                loan_id: this.props.loan?.data?.loan_id,
+                loan_id: this.props.loan?.data?.loan_id || 0,
                 pan: this.props?.loan?.data?.pan,
                 name: this.props?.loan?.data?.name,
                 dob: this.props?.loan?.data?.dob,

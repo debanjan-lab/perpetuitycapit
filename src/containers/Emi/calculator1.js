@@ -24,6 +24,7 @@ import AppHeader from '../../components/AppHeader';
 import AppHeaderInner from '../../components/AppHeaderInner';
 import Slider from '@react-native-community/slider';
 import { getEmiData } from '../../redux/actions/emi';
+import Spinner from 'react-native-loading-spinner-overlay';
 class CalculateEmi extends Component {
     constructor(props) {
         super(props);
@@ -65,6 +66,7 @@ class CalculateEmi extends Component {
                     interestRateValue: this.state.interestRateValue || res.result[2].interest_min,
                     minInterestRate: res.result[2].interest_min,
                     maxInterestRate: res.result[2].interest_max,
+                    loading: false
                 })
                 // console.log("emi", res)
             })
@@ -88,23 +90,17 @@ class CalculateEmi extends Component {
     }
 
     _calculateEMI = (value, field) => {
+
         this.setState({
             [field]: value
         }, () => {
-
-
-
             var lnamnt = this.state.loanAmountValue;
             var lninterest = this.state.interestRateValue;
             var mytenure = this.state.tenureValue;
-
             var inrate = parseFloat((lninterest * mytenure) / 100);
             var totinterest = parseFloat(lnamnt * inrate);
             var emiamnt = parseInt((totinterest + lnamnt) / (mytenure * 12));
             var total_amount_payable = parseInt(totinterest + lnamnt);
-
-
-
             this.setState({
                 inrate,
                 totinterest,
@@ -115,9 +111,17 @@ class CalculateEmi extends Component {
     }
 
     _doCalculateEMI = () => {
-        const { inrate, totinterest, emiamnt, total_amount_payable, loanAmountValue } = this.state;
-        this.props.navigation.navigate('CalculateEmiScreen2', { inrate: inrate, totinterest, totinterest, emiamnt: emiamnt, total_amount_payable: total_amount_payable, loanAmountValue: loanAmountValue })
+        var lnamnt = this.state.loanAmountValue;
+        var lninterest = this.state.interestRateValue;
+        var mytenure = this.state.tenureValue;
+        var inrate = parseFloat((lninterest * mytenure) / 100);
+        var totinterest = parseFloat(lnamnt * inrate);
+        var emiamnt = parseInt((totinterest + lnamnt) / (mytenure * 12));
+        var total_amount_payable = parseInt(totinterest + lnamnt);
+        var loanAmountValue = this.state.loanAmountValue
 
+
+        this.props.navigation.navigate('CalculateEmiScreen2', { inrate: inrate, totinterest, totinterest, emiamnt: emiamnt, total_amount_payable: total_amount_payable, loanAmountValue: loanAmountValue })
     }
 
 
@@ -125,6 +129,7 @@ class CalculateEmi extends Component {
     render() {
         return (
             <ScrollView contentContainerStyle={styles.container}>
+                <Spinner visible={this.state.loading} />
                 <View style={{ flex: 1 }}>
                     <AppHeaderInner
                         headerText="Emi Calculator"

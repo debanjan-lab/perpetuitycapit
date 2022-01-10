@@ -120,6 +120,7 @@ class ProfileEdit extends Component {
                         navigation={this.props.navigation}
                         editText={'Save'}
                         onPressEdit={() => this._saveProfile()}
+                        goBack={true}
                     />
                     <View style={{ padding: 20 }}>
                         <TextInputUtil

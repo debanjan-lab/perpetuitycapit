@@ -23,7 +23,7 @@ const Row = ({ label, icon, route, navigation }) => {
 
     const redirect = () => {
         navigation.dispatch(DrawerActions.toggleDrawer())
-        // navigation.navigate(route)
+        navigation.navigate(route)
     }
 
     const logout = () => {
@@ -61,8 +61,8 @@ const CustomDrawer = (props) => {
             <View style={{ flex: 1, backgroundColor: 'white' }}>
                 <Row label={'About Us'} icon={require('../images/about_us_icon.png')} route={'AboutUs'} navigation={props.navigation} />
                 <Row label={'How it works'} icon={require('../images/how_it_works.png')} route={'HowItWorks'} navigation={props.navigation} />
-                <Row label={'Terms and Conditions'} icon={require('../images/terms_&_conditions.png')} route={'TermsConditions'} navigation={props.navigation} />
-                <Row label={'Privacy Policy'} icon={require('../images/privacy_policy_icon.png')} route={'PrivacyPolicy'} navigation={props.navigation} />
+                {/* <Row label={'Terms and Conditions'} icon={require('../images/terms_&_conditions.png')} route={'TermsConditions'} navigation={props.navigation} />
+                <Row label={'Privacy Policy'} icon={require('../images/privacy_policy_icon.png')} route={'PrivacyPolicy'} navigation={props.navigation} /> */}
                 <Row label={'Contact Us'} icon={require('../images/contact_us_icon.png')} route={'ContactUs'} navigation={props.navigation} />
             </View>
         </View>

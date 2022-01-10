@@ -10,7 +10,8 @@ import {
     KeyboardAvoidingView,
     ActivityIndicator,
     ScrollView,
-    StyleSheet
+    StyleSheet,
+    Alert
 } from 'react-native';
 import fontSelector from '../../../constants/FontSelectors';
 import Colors from '../../../constants/Colors';
@@ -80,17 +81,6 @@ class LoanApplyScreen6 extends Component {
     _onchangeText = (field, value) => {
         this.setState({
             [field]: value
-        }, () => {
-            if (field == 'vehicle_price') {
-                this.setState({
-                    loan_amount: (value * 90) / 100
-                })
-            }
-            if (field == 'loan_amount') {
-                this.setState({
-                    vehicle_price: (value * 100) / 90
-                })
-            }
         })
     }
 
@@ -125,6 +115,12 @@ class LoanApplyScreen6 extends Component {
 
 
         //this.props.navigation.navigate('LoanApplyScreen7')
+
+        if (loan_amount > (vehicle_price * 90) / 100) {
+            Alert.alert('Loan amount cannot be greater that 90% of Vehicle price!')
+            return false
+        }
+
 
 
         this.props.saveLoan(obj).then((res) => {

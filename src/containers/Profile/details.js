@@ -54,6 +54,7 @@ class ProfileDetails extends Component {
                         navigation={this.props.navigation}
                         editText={'Edit'}
                         onPressEdit={() => this.props.navigation.navigate('ProfileEditScreen')}
+                        goBack={true}
                     />
                     <View style={{ padding: 20 }}>
                         <View style={{ marginTop: hp(5) }} />

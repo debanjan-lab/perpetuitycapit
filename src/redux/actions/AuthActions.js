@@ -31,20 +31,26 @@ export const doLogin = (payload) => async (dispatch) => {
 }
 
 
+
 export const saveUserData = (payload) => async (dispatch) => {
     const token = payload.api_token;
-    await AsyncStorage.setItem('@apiToken', token).then((res) => {
+    const user_id = payload.user_id.toString();
+    const items = [['@apiToken', token], ['@user_id', user_id]]
+    await AsyncStorage.multiSet(items).then((res) => {
         dispatch({ type: AUTH_LOGIN_DATA, payload: payload })
     })
 }
 
 
 
+
 export const checkAuth = () => async (dispatch) => {
     const value = await AsyncStorage.getItem('@apiToken')
+    const value1 = await AsyncStorage.getItem('@user_id')
     if (value !== null) {
         let obj = {
-            api_token: value
+            api_token: value,
+            user_id: value1
         }
         dispatch({ type: AUTH_LOGIN_DATA, payload: obj })
     } else {

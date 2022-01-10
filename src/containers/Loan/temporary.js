@@ -97,6 +97,7 @@ class TemporarySavedLoan extends Component {
                     <AppHeaderInner
                         headerText="Temporary Saved Loans"
                         navigation={this.props.navigation}
+                        goBack={true}
                     />
 
                     <View style={{ padding: 20 }}>

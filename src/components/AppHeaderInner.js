@@ -14,13 +14,13 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-const AppHeaderInner = ({ headerText, editText, onPressEdit, navigation, applyLoanText, applyLoan }) => {
+const AppHeaderInner = ({ headerText, editText, onPressEdit, navigation, applyLoanText, applyLoan, goBack }) => {
     return (
         <>
             <AppStatusBar />
             <View style={styles.wrapper}>
 
-                <TouchableOpacity onPress={() => navigation.goBack()}>
+                <TouchableOpacity onPress={() => goBack ? navigation.goBack() : navigation.navigate('DashboardScreen')}>
                     <Image
                         source={require('../images/back_icon.png')}
                         style={styles.icon}

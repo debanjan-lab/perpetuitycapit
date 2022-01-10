@@ -15,7 +15,7 @@ import {
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
-const AppHeader = ({ headerText, subHeaderText, logo, navigation }) => {
+const AppHeader = ({ headerText, subHeaderText, logo, navigation, version }) => {
     return (
         <>
             <AppStatusBar />
@@ -37,6 +37,7 @@ const AppHeader = ({ headerText, subHeaderText, logo, navigation }) => {
                 <Image source={logo} style={styles.logo} />
                 <Text style={styles.heading}>{headerText}</Text>
                 <Text style={styles.headingSub}>{subHeaderText}</Text>
+                <Text style={styles.headingSub}>Version : {version}</Text>
             </View>
         </>
     );

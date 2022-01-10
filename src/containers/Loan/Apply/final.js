@@ -10,7 +10,8 @@ import {
     KeyboardAvoidingView,
     ActivityIndicator,
     ScrollView,
-    StyleSheet
+    StyleSheet,
+    Alert
 } from 'react-native';
 import fontSelector from '../../../constants/FontSelectors';
 import Colors from '../../../constants/Colors';
@@ -69,9 +70,9 @@ class LoanApplyFinalScreen extends Component {
             user_id: this.props.auth.user_id,
             loan_id: this.props.loan?.data?.loan_id
         }
+
         finalApplyLoan(obj).then(res => {
-            console.log(res)
-            alert(res.message)
+            Alert.alert(res.message)
             this.props.navigation.navigate('DashboardScreen')
         })
     }

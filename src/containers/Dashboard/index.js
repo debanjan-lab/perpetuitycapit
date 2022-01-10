@@ -26,10 +26,12 @@ import { connect } from 'react-redux';
 import { getProfile } from '../../redux/actions/AuthActions';
 import { getStates } from '../../redux/actions/StateActions';
 import { getCities } from '../../redux/actions/CityActions';
-import { updateLocation } from '../../redux/actions/location';
+import { updateLocation, getGeoLoaction } from '../../redux/actions/location';
 import Geolocation from '@react-native-community/geolocation';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { clearApplyLoan } from '../../redux/actions/LoanActions';
+import VersionNumber from 'react-native-version-number';
+console.log(VersionNumber.buildVersion);
 var options = {
     enableHighAccuracy: false,
 };
@@ -74,10 +76,20 @@ class DashboardScreen extends Component {
                     //console.log("location", this.state)
 
                     this._getProfile()
-                    this._getStates()
+
 
                 });
             }, error, options);
+    }
+
+    _getProfile = () => {
+        let obj = {
+            token: this.props.auth.api_token
+        }
+        this.props.getProfile(obj).then(() => {
+            this._updateLocation()
+
+        })
     }
 
     _updateLocation = () => {
@@ -88,22 +100,23 @@ class DashboardScreen extends Component {
             latitude: this.state.latitude,
             longitude: this.state.longitude,
             user_id: this.props?.auth?.user_id,
-            location: "Kolkata"
         }
-        updateLocation(obj).then((res) => {
-            console.log("res", res)
+        getGeoLoaction(obj).then((res) => {
+            obj['location'] = res
+            //console.log("obj============>>>", obj)
+            updateLocation(obj).then((res1) => {
+
+
+                this._getCities()
+
+
+
+            })
+
         })
     }
 
-    _getProfile = () => {
-        let obj = {
-            token: this.props.auth.api_token
-        }
-        this.props.getProfile(obj).then(() => {
-            this._updateLocation()
-            this._getCities()
-        })
-    }
+
 
     _getStates = () => {
         let obj = {
@@ -111,6 +124,10 @@ class DashboardScreen extends Component {
         }
         this.props.getStates(obj).then(() => {
             //console.log("this.props", this.props)
+            setTimeout(() => {
+                this.setState({ loading: false })
+            }, 1000);
+
         })
     }
 
@@ -121,9 +138,7 @@ class DashboardScreen extends Component {
         }
         this.props.getCities(obj).then(() => {
 
-            setTimeout(() => {
-                this.setState({ loading: false })
-            }, 1000);
+            this._getStates()
 
 
             //console.log("this.props", this.props)
@@ -166,6 +181,7 @@ class DashboardScreen extends Component {
                         subHeaderText="Thanks for registering with Perpetuity Capital. Let's get started."
                         logo={require('../../images/home_icon.png')}
                         navigation={this.props.navigation}
+                        version={VersionNumber.buildVersion}
                     />
                     <View style={{ marginTop: hp(10) }} />
                     <ButtonUtil lesspadding={true} active={true} label={'Apply For Loan'} loading={this.state.loading} onPress={() => this._applyForLoan()} />

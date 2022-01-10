@@ -122,8 +122,10 @@ class OtpScreen extends Component {
                         this.setState({
                             isLoading: false,
                             userData: userInfo
+                        }, () => {
+                            AsyncStorage.setItem('userData', JSON.stringify(this.state.userData))
                         })
-                        AsyncStorage.setItem('userData', JSON.stringify(this.state.userData))
+
                         this.props.navigation.reset({
                             index: 0,
                             routes: [{ name: 'DrawerScreen', params: null }],
