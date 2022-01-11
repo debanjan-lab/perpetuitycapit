@@ -50,20 +50,34 @@ class LoanApplyScreen1 extends Component {
         };
     }
     componentDidMount() {
-        setTimeout(() => {
+        const start = this.props?.route?.params?.start || 0;
+        if (start) {
             this.setState({
-                loan_id: this.props.loan?.data?.loan_id || 0,
-                pan: this.props?.loan?.data?.pan,
-                name: this.props?.loan?.data?.name,
-                dob: this.props?.loan?.data?.dob,
-                status: this.props?.loan?.data?.status,
-                aadharno: this.props?.loan?.data?.aadharno,
-                mobile: this.props.auth.mobile,
+                loan_id: 0,
+                pan: null,
+                name: null,
+                dob: null,
+                status: null,
+                aadharno: null,
+                mobile: null,
                 screenLoading: false,
             })
-        }, 1000);
 
+        } else {
+            setTimeout(() => {
+                this.setState({
+                    loan_id: this.props.loan?.data?.loan_id || 0,
+                    pan: this.props?.loan?.data?.pan,
+                    name: this.props?.loan?.data?.name,
+                    dob: this.props?.loan?.data?.dob,
+                    status: this.props?.loan?.data?.status,
+                    aadharno: this.props?.loan?.data?.aadharno,
+                    mobile: this.props.auth.mobile,
+                    screenLoading: false,
+                })
+            }, 1000);
 
+        }
     }
 
 

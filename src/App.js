@@ -24,7 +24,7 @@ const App = () => {
       SplashScreen.hide()
       setLoading(false)
     }, 1000)
-  }, [])
+  }, [dispatch])
 
   if (loading) {
     return (

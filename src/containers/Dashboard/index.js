@@ -156,7 +156,7 @@ class DashboardScreen extends Component {
             if (is_email_active) {
                 this.props.clearApplyLoan().then((res) => {
                     console.log(this.props)
-                    this.props.navigation.navigate('LoanApplyScreen1')
+                    this.props.navigation.navigate('LoanApplyScreen1', { start: 'new' })
                 })
 
             } else {
