@@ -36,7 +36,7 @@ const Row = ({ value, onPress }) => {
                 <View style={{ flex: 1 }}>
                     <Text style={styles.loanType}>Loan Type</Text>
                     <Text style={styles.loanTypeDecription}>{value?.loan_type} - ₹{((value?.ln_loan_amount) * 1).toLocaleString()}</Text>
-                    <Text style={styles.dateText}>{moment(new Date(value?.approved_on)).format('YYYY-MM-DD')}</Text>
+                    <Text style={styles.dateText}>{moment(new Date(value?.approved_on)).format('Do MMM , YYYY')}</Text>
                 </View>
                 <View style={{ flex: .6, justifyContent: 'space-between' }}>
                     <TouchableOpacity style={{ alignSelf: 'flex-end' }}>
@@ -45,18 +45,12 @@ const Row = ({ value, onPress }) => {
                             style={styles.icon}
                         />
                     </TouchableOpacity>
-
-
                     <TouchableOpacity style={styles.repayButton}>
                         <Text style={styles.repayText}>Repay Interest</Text>
                     </TouchableOpacity>
                 </View>
-
-
             </View>
-
         </View>
-
     )
 }
 

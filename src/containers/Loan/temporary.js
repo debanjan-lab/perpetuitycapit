@@ -32,7 +32,7 @@ const Row = ({ value, onPress }) => {
     return (
         <TouchableOpacity style={styles.successRow} onPress={() => onPress(value?.loan_id)}>
             <Text style={styles.rowText}>Loan Id : {value?.loan_id?.toString()?.padStart(5, '0')}</Text>
-            <Text style={styles.rowText}>Date Added : {moment(new Date(value?.created_at)).format('YYYY-MM-DD HH:mm:ss')}</Text>
+            <Text style={styles.rowText}>Date Added : {moment(new Date(value?.created_at)).format('Do MMM , YYYY HH:mm:ss')}</Text>
         </TouchableOpacity>
     )
 }

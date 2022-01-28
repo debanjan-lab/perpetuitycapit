@@ -43,12 +43,12 @@ export function updateLocation(payload) {
         });
         return request.then(
             response => {
-                //console.log("response", response)
+                console.log("response", response)
                 resolve(response.data);
             },
             err => {
 
-                // console.log("err===((", err.response)
+                console.log("err===((", err.response)
             }
         );
     })

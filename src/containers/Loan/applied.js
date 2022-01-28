@@ -28,11 +28,12 @@ import { getLoanDetails, getAppliedLoan } from '../../redux/actions/LoanActions'
 import { connect } from 'react-redux';
 import moment from 'moment';
 import Spinner from 'react-native-loading-spinner-overlay';
+
 const Row = ({ value, onPress }) => {
     return (
         <View style={styles.rowContainer}>
             <View style={styles.rowContainerHeader}>
-                <Text style={styles.rowContainerHeaderLeft}>{moment(new Date(value?.created_at)).format('YYYY-MM-DD')}</Text>
+                <Text style={styles.rowContainerHeaderLeft}>{moment(new Date(value?.created_at)).format('Do MMM , YYYY')}</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     {
                         value?.status == 3 &&

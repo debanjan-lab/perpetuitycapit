@@ -26,6 +26,9 @@ import AboutUs from '../containers/AboutUs';
 import HowItWorks from '../containers/HowItWorks';
 import ContactUs from '../containers/ContactUs';
 
+import TermsConditions from '../containers/TermsConditions';
+import PrivacyPolicy from '../containers/PrivacyPolicy';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -63,6 +66,9 @@ const AppStackNavigator = () => {
             <Stack.Screen name="AboutUs" component={AboutUs} />
             <Stack.Screen name="HowItWorks" component={HowItWorks} />
             <Stack.Screen name="ContactUs" component={ContactUs} />
+
+            <Stack.Screen name="TermsConditions" component={TermsConditions} />
+            <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
 
         </Stack.Navigator>
     );

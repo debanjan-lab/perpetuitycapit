@@ -56,7 +56,7 @@ class DashboardScreen extends Component {
     }
     _reload = () => {
         this.setState({
-            loading: true,
+            //  loading: true,
         }, () => {
             this.callLocation()
         })

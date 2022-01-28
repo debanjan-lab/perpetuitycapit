@@ -288,7 +288,7 @@ class LoanApplyScreen2 extends Component {
                         />
                         <View style={{ margin: 10 }} />
                         <TextInputUtil
-                            placeHolder={'Pic Code'}
+                            placeHolder={'Pin Code'}
                             keyboardType={"numeric"}
                             prefix={null}
                             hasDevider={false}

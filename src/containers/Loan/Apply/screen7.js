@@ -86,7 +86,7 @@ class LoanApplyScreen7 extends Component {
             setTimeout(() => {
                 this.setState({
                     loan_id: this.props.loan?.data?.loan_id,
-                    aadhar_driving_type: this.props.loan?.data?.aadhar_driving_type > 1 ? 2 : 1,
+                    aadhar_driving_type: this.props.loan?.data?.aadhar_driving_type > 1 ? '2' : '1',
                     self_photo: this.props.loan?.data?.self_photo,
                     pan_card: this.props.loan?.data?.pan_card,
                     bank_statement: this.props.loan?.data?.bank_statement,

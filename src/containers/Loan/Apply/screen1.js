@@ -59,7 +59,7 @@ class LoanApplyScreen1 extends Component {
                 dob: null,
                 status: null,
                 aadharno: null,
-                mobile: null,
+                mobile: this.props.auth.mobile,
                 screenLoading: false,
             })
 

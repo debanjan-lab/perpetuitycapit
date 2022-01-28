@@ -40,7 +40,7 @@ class LoanApplyScreen6 extends Component {
             vehicle_type: null,
             brands: [],
             vehicle_brand: null,
-            model: [],
+            models: [],
             model_no: null,
             vehicle_price: null,
             loan_tenure: null,
@@ -58,7 +58,6 @@ class LoanApplyScreen6 extends Component {
                 loan_type: this.props.loan?.data?.loan_type,
                 vehicle_type: this.props.loan?.data?.vehicle_type,
                 vehicle_brand: this.props.loan?.data?.vehicle_brand,
-                model_no: this.props.loan?.data?.model_no,
                 vehicle_price: this.props.loan?.data?.vehicle_price,
                 loan_tenure: this.props.loan?.data?.loan_tenure,
                 loan_amount: this.props.loan?.data?.loan_amount,
@@ -67,9 +66,9 @@ class LoanApplyScreen6 extends Component {
                 if (this.state.loan_type !== '') {
                     this._geBrand(this.state.loan_type)
                 }
-                if (this.state.vehicle_brand !== '') {
-                    this._getModel(this.state.vehicle_brand)
-                }
+                // if (this.state.vehicle_brand !== '') {
+                //     this._getModel(this.state.vehicle_brand)
+                // }
 
 
             })
@@ -111,7 +110,8 @@ class LoanApplyScreen6 extends Component {
             loan_tenure: loan_tenure,
             loan_amount: loan_amount
         }
-        //console.log(obj)
+        // console.log(obj)
+        // return false
 
 
         //this.props.navigation.navigate('LoanApplyScreen7')
@@ -161,6 +161,8 @@ class LoanApplyScreen6 extends Component {
         getBrands(obj).then((res) => {
             this.setState({
                 brands: res.data,
+            }, () => {
+                this._getModel(this.state.vehicle_brand)
             })
 
         })
@@ -168,7 +170,8 @@ class LoanApplyScreen6 extends Component {
 
     _getModel = (value) => {
         this.setState({
-            vehicle_brand: value
+            vehicle_brand: value,
+            model_no: null
         })
         let token = this.props.auth.api_token;
         let user_id = this.props.auth.user_id;
@@ -180,8 +183,14 @@ class LoanApplyScreen6 extends Component {
         }
         getModels(obj).then((res) => {
             this.setState({
-                model: res.data,
+                models: res?.data || [],
 
+            }, () => {
+                if (this.state.models.length > 0) {
+                    this.setState({
+                        model_no: this.props.loan?.data?.model_no
+                    })
+                }
             })
 
         })
@@ -263,6 +272,13 @@ class LoanApplyScreen6 extends Component {
                                 onValueChange={(itemValue) => this.setState({ model_no: itemValue })}
                             >
                                 <Picker.Item label="--Select Model--" value="" />
+                                {
+                                    this.state.models?.map((value, key) => {
+                                        return (
+                                            <Picker.Item key={key} label={value.model_name} value={value.id} />
+                                        )
+                                    })
+                                }
                             </Picker>
                         </View>
                         <View style={{ margin: 10 }} />

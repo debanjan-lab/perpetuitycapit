@@ -4,7 +4,7 @@ import { BASE_URL } from '../../configs';
 
 export function getModels(payload) {
     return new Promise((resolve) => {
-        //console.log("payload", payload)
+        console.log("payload", payload)
         const url = `${BASE_URL}Auth/get-model`;
         console.log(url)
         const request = axios({
@@ -18,7 +18,7 @@ export function getModels(payload) {
         });
         return request.then(
             response => {
-                console.log("response", response)
+                console.log("response====>", response)
                 resolve(response.data);
             },
             err => {

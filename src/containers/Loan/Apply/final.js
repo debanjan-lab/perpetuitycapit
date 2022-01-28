@@ -158,6 +158,12 @@ class LoanApplyFinalScreen extends Component {
                         navigation={this.props.navigation}
                     />
                     <Row
+                        heading={"Select State"}
+                        index={2}
+                        description={this.props.states.data.find(value => value.state_id == this.props.loan?.data?.current_state)?.state_name}
+                        navigation={this.props.navigation}
+                    />
+                    <Row
                         heading={"Select City"}
                         index={2}
                         description={this.props.cities.data.find(value => value.city_id == this.props.loan?.data?.current_city)?.city_name}
@@ -217,12 +223,23 @@ class LoanApplyFinalScreen extends Component {
         if (k == 4) {
             return (
                 <>
-                    <Row
-                        index={5}
-                        heading={"Net Monthy income"}
-                        description={this.props.loan?.data?.net_monthly_income}
-                        navigation={this.props.navigation}
-                    />
+                    {
+                        this.props?.loan?.data?.occupation_type == 'Self Employed' ?
+                            <Row
+                                index={5}
+                                heading={"Last Annual Turn over"}
+                                description={this.props.loan?.data?.last_annual_turn_over}
+                                navigation={this.props.navigation}
+                            />
+                            :
+                            <Row
+                                index={5}
+                                heading={"Net Monthy income"}
+                                description={this.props.loan?.data?.net_monthly_income}
+                                navigation={this.props.navigation}
+                            />
+                    }
+
                     <Row
                         index={5}
                         heading={"Number of Dependacies"}
@@ -250,13 +267,13 @@ class LoanApplyFinalScreen extends Component {
                     <Row
                         index={6}
                         heading={"Brand Name"}
-                        description={this.props.loan?.data?.vehicle_brand}
+                        description={this.props.loan?.data?.brand_name}
                         navigation={this.props.navigation}
                     />
                     <Row
                         index={6}
                         heading={"Model Name"}
-                        description={this.props.loan?.data?.model_no}
+                        description={this.props.loan?.data?.model_name}
                         navigation={this.props.navigation}
                     />
                     <Row
@@ -285,7 +302,7 @@ class LoanApplyFinalScreen extends Component {
 
 
     render() {
-        const arr = new Array(this.state.maxStep).fill(0)
+        const arr = new Array(this.state.maxStep - 1).fill(0)
         return (
             <ScrollView contentContainerStyle={styles.container}>
                 <Spinner visible={this.state.screenLoading} />
