@@ -35,9 +35,12 @@ const App = () => {
     )
   }
   return (
+    // <NavigationContainer>
+    //   {authState.api_token == null ? <AuthStackNavigator /> : <DrawerkNavigator />}
+    // </NavigationContainer>
     <NavigationContainer>
-      {authState.api_token == null ? <AuthStackNavigator /> : <DrawerkNavigator />}
-    </NavigationContainer>
+    {authState.api_token == null ? <DrawerkNavigator /> : <DrawerkNavigator />}
+  </NavigationContainer>
   );
 };
 export default App;

@@ -28,7 +28,11 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import Spinner from 'react-native-loading-spinner-overlay';
 import NoRecord from '../../components/NoRecord';
-const Row = ({ value, onPress }) => {
+import { BASE_URL } from '../../configs';
+import axios from 'axios';
+const Row = ({ value, getDetails,transcation }) => {
+    let dat = moment(new Date(value?.approved_on)).format('Do MMM , YYYY')
+    console.log(dat)
     return (
 
         <View style={styles.successRow}>
@@ -36,16 +40,16 @@ const Row = ({ value, onPress }) => {
                 <View style={{ flex: 1 }}>
                     <Text style={styles.loanType}>Loan Type</Text>
                     <Text style={styles.loanTypeDecription}>{value?.loan_type} - ₹{((value?.ln_loan_amount) * 1).toLocaleString()}</Text>
-                    <Text style={styles.dateText}>{moment(new Date(value?.approved_on)).format('Do MMM , YYYY')}</Text>
+                    <Text style={styles.dateText}>{dat}</Text>
                 </View>
                 <View style={{ flex: .6, justifyContent: 'space-between' }}>
-                    <TouchableOpacity style={{ alignSelf: 'flex-end' }}>
+                    <TouchableOpacity style={{ alignSelf: 'flex-end' }} onPress={() => transcation(value?.loan_id) }>
                         <Image
                             source={require('../../images/transaction_history.png')}
                             style={styles.icon}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.repayButton}>
+                    <TouchableOpacity style={styles.repayButton} onPress={() => getDetails(value?.loan_id)}>
                         <Text style={styles.repayText}>Repay Interest</Text>
                     </TouchableOpacity>
                 </View>
@@ -76,6 +80,7 @@ class TemporarySavedLoan extends Component {
             user_id: user_id,
             token: token
         }
+        console.log('objjj',obj)
         getApprovedLoan(obj).then((res) => {
             console.log("incomplete loans", res)
             //  alert(res.message)
@@ -96,14 +101,47 @@ class TemporarySavedLoan extends Component {
             token: token,
             loan_id: loan_id
         }
-        this.props.getLoanDetails(obj).then(res => {
-            let steps = this.props?.loan?.data?.steps
-            //alert(steps)
-            const screen = `LoanApplyScreen${steps}`
-            console.log(screen)
-            this.props.navigation.navigate(screen)
+        console.log('objnhh',obj)
 
-        })
+        const url = `${BASE_URL}Auth/get-loan-details`;
+                console.log(url)
+               
+                const request = axios({
+                    method: 'POST',
+                    url: url,
+                    data: obj,
+                    headers: {
+                        // "Content-Type": 'application/json',
+                        "Authorization": `Bearer ${obj.token}`
+                    }
+                });
+                request.then((res) =>{
+
+                    if(res.data.data){
+                        this.props.navigation.navigate('LoanDetails',obj)
+                    }
+                    else{
+                        alert('the Payment has already paid')
+                    }
+
+                })
+        // this.props.getLoanDetails(obj).then(res => {
+        //     let steps = this.props?.loan?.data?.steps
+        //     //alert(steps)
+        //     const screen = `LoanApplyScreen${steps}`
+        //     console.log(screen)
+        //     this.props.navigation.navigate('LoanDetails')
+
+        // }
+        // )
+
+         
+
+    }
+
+    _transaction = (loanId) =>{
+        console.log(loanId)
+        this.props.navigation.navigate('IndividualTransaction',loanId)
     }
 
 
@@ -123,7 +161,7 @@ class TemporarySavedLoan extends Component {
                         {
                             this.state.list.map((value, key) => {
                                 return (
-                                    <Row key={key} value={value} onPress={this._getDetails} />
+                                    <Row key={key} value={value} getDetails={this._getDetails} transcation = {this._transaction} />
                                 )
                             })
                         }

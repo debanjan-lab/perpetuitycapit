@@ -6,4 +6,5 @@ export default class Colors {
   static whiteColor = '#FFFFFF';
   static greyColor = '#F2F2F3';
   static lightGreen = '#EEF9EF';
+  static yellowColor = '#ffd700'
 }

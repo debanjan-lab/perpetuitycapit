@@ -65,7 +65,7 @@ class ProfileScreen extends Component {
                         <Row label={"Temporary Saved Loans"} hasRightIcon={true} isSuccess={true} iconLeft={require('../../images/terms_&_conditions.png')} onPress={() => this.props.navigation.navigate('TemporarySavedLoan')} />
                         <Row label={"My applied Loan"} hasRightIcon={true} isSuccess={true} iconLeft={require('../../images/my_applied_loan.png')} onPress={() => this.props.navigation.navigate('AppliedLoan')} />
                         <Row label={"My approved Loan"} hasRightIcon={true} isSuccess={true} iconLeft={require('../../images/my_approved_loan.png')} onPress={() => this.props.navigation.navigate('ApprovedLoan')} />
-                        <Row label={"Transaction History"} hasRightIcon={true} isSuccess={true} iconLeft={require('../../images/transaction_history.png')} onPress={() => { }} />
+                        <Row label={"Transaction History"} hasRightIcon={true} isSuccess={true} iconLeft={require('../../images/transaction_history.png')} onPress={() => this.props.navigation.navigate('TransactionHistory')} />
                         <Row label={"Logout"} hasRightIcon={false} isSuccess={false} iconLeft={require('../../images/logout.png')} onPress={() => this.doLogout()} />
                     </View>
 

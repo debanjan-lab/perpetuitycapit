@@ -17,7 +17,7 @@ const Pay = () => {
                 key: 'rzp_test_7jh7xVeFYorTkB',
                 amount: '5000',
                 name: 'Acme Corp',
-                order_id: 'order_DslnoIgkIDL8Zt',//Replace this with an order_id created using Orders API.
+                // order_id: 'order_DslnoIgkIDL8Zt',//Replace this with an order_id created using Orders API.
                 prefill: {
                     email: 'gaurav.kumar@example.com',
                     contact: '9191919191',
