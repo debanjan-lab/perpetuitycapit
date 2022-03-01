@@ -16,7 +16,7 @@ const AppStatusBar = () => {
                 translucent={true}
                 barStyle={'dark-content'}
             />
-            <View style={{ margin: 20 }} />
+            
         </>
     )
 }

@@ -73,7 +73,7 @@ class DashboardScreen extends Component {
                     longitude: currentLongitude,
                     latitude: currentLatitude,
                 }, () => {
-                    //console.log("location", this.state)
+                    console.log("location", this.state)
 
                     this._getProfile()
 
@@ -103,7 +103,7 @@ class DashboardScreen extends Component {
         }
         getGeoLoaction(obj).then((res) => {
             obj['location'] = res
-            //console.log("obj============>>>", obj)
+            console.log("obj============>>>", obj)
             updateLocation(obj).then((res1) => {
 
 
@@ -156,6 +156,7 @@ class DashboardScreen extends Component {
             if (is_email_active) {
                 this.props.clearApplyLoan().then((res) => {
                     console.log(this.props)
+                    // this.props.navigation.navigate('LoanApplyScreen1', { start: 'new' })
                     this.props.navigation.navigate('LoanApplyScreen1', { start: 'new' })
                 })
 
